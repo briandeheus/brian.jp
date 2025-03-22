@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="blog-title pb-4 mb-6">
+    <h1>{{ config.title }}</h1>
+    <p class="text-gray-600">{{ config.description }}</p>
+</header>
+
+<main class="blog-content">
+    {% if paginator %}
+        {% for page in paginator.pages %}
+        <article class="mb-12">
+            <h2><a href="{{ page.permalink }}" class="capitalize">{{ page.title }}</a></h2>
+            <p class="text-gray-600">{{ page.date | date(format="%B %d, %Y") }}</p>
+            {% if page.description %}
+                <p>{{ page.description }}</p>
+            {% elif page.summary %}
+                {{ page.summary | safe }}
+            {% else %}
+                <p>{{ page.content | striptags | truncate(length=500) }}</p>
+            {% endif %}
+            
+            <p><a href="{{ page.permalink }}" class="underline">Continue reading →</a></p>
+        </article>
+        {% endfor %}
+        
+        {% if paginator.previous or paginator.next %}
+        <nav class="flex justify-between mt-8">
+            {% if paginator.previous %}
+            <a href="{{ paginator.previous }}" class="underline">← Newer posts</a>
+            {% else %}
+            <span></span>
+            {% endif %}
+            
+            {% if paginator.next %}
+            <a href="{{ paginator.next }}" class="underline">Older posts →</a>
+            {% endif %}
+        </nav>
+        {% endif %}
+    {% else %}
+        {% for page in section.pages %}
+        <article class="mb-12">
+            <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+            <p class="text-gray-600">{{ page.date | date(format="%B %d, %Y") }}</p>
+            
+            {% if page.description %}
+                <p>{{ page.description }}</p>
+            {% elif page.summary %}
+                {{ page.summary | safe }}
+            {% else %}
+                <p>{{ page.content | striptags | truncate(length=150) }}</p>
+            {% endif %}
+            
+            <p><a href="{{ page.permalink }}" class="underline">Continue reading →</a></p>
+        </article>
+        {% endfor %}
+    {% endif %}
+</main>
+{% endblock %}

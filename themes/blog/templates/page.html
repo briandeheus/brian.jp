@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+{% block content %}
+<header class="blog-title pb-4 mb-6">
+  <div class="flex justify-between">
+    <div>
+      <h1>{{ page.title }}</h1>
+      <p class="text-gray-600">{{ page.date | date(format="%B %d, %Y") }}</p>
+    </div>
+    <div class="flex items-end">
+      <a href="{{ config.base_url }}" class="text-gray-400 text-sm hover:text-gray-600 transition-colors">
+        Back to home →
+      </a>
+    </div>
+  </div>
+</header>
+<main class="blog-content">
+  <article>
+    {{ page.content | safe }}
+  </article>
+</main>
+<footer class="mt-10 pt-6 border-t border-gray-300 text-sm text-gray-600">
+  {% if page.taxonomies.tags %}
+  <p>
+    Tags:
+    {% for tag in page.taxonomies.tags %}
+    <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="underline">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+    {% endfor %}
+  </p>
+  {% endif %}
+</footer>
+{% endblock %}

@@ -1,0 +1,32 @@
+# Basic configuration
+base_url = "https://brian.jp"
+title = "From Brian."
+description = "It is what it is, I suppose."
+generate_feeds = true
+author = "Brian de Heus"
+
+# Set the theme
+theme = "blog"
+
+# Add taxonomies if needed
+taxonomies = [
+    {name = "tags", feed = true},
+]
+
+# Default language
+default_language = "en"
+
+# Use Zola's Markdown renderer
+[markdown]
+highlight_code = true
+render_emoji = true
+smart_punctuation = true
+
+# Template configuration
+[extra]
+# Any extra custom variables you want to use in templates
+
+# Enable pagination in the [extra] section
+[extra.paginate]
+by = 10
+path = "page"

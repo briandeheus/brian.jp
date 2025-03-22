@@ -1,0 +1,11 @@
+name = "bog"
+description = "A typewriter-inspired blog theme with a clean, historical document aesthetic"
+license = "MIT"
+homepage = "https://github.com/briandeheus"
+min_version = "0.0.0"
+
+# The author of the theme
+[author]
+name = "Brian de Heus"
+homepage = "https://brian.jp"
+

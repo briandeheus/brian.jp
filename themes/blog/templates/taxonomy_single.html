@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ term.name }} | {{ config.title }}{% endblock %}
+
+{% block content %}
+<header class="blog-title pb-4 mb-6">
+    <h1>{{ taxonomy.name | title }}: {{ term.name }}</h1>
+</header>
+
+<main class="blog-content">
+    {% for page in term.pages %}
+    <article class="mb-8">
+        <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+        <p class="text-gray-600">{{ page.date | date(format="%B %d, %Y") }}</p>
+        {% if page.summary %}
+            {{ page.summary | safe }}
+            <p><a href="{{ page.permalink }}" class="underline">Continue reading →</a></p>
+        {% endif %}
+    </article>
+    {% endfor %}
+</main>
+{% endblock %}
