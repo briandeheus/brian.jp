@@ -1,5 +1,5 @@
 +++
-title = "Home"
+title = "By Brian."
 sort_by = "date"
-paginate_by = 5
+paginate_by = 10
 +++
