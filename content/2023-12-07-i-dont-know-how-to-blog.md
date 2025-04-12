@@ -3,8 +3,6 @@ title = "I don't know how to blog."
 date = 2023-12-07
 +++
 
-
-
 I've had many blogs in the past, but I still don't know how to blog.
 After a year or so I get bored, delete my blog, move on with life, until a friend or
 two begin blogging and the itch for me has to be scratched too.

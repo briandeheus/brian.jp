@@ -6,19 +6,21 @@
 <title>{% block title %}{{ config.title }}{% endblock %}</title>
 
 <!-- Social Media Cards / Open Graph -->
-<meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock %}">
-<meta property="og:description" content="{% block og_description %}{{ config.description }}{% endblock %}">
-<meta property="og:type" content="{% block og_type %}website{% endblock %}">
+<meta property="og:title" content="{% block og_title %}{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}{% endblock %}">
+<meta property="og:description" content="{% block og_description %}{% if page.description %}{{ page.description }}{% else %}{{ config.description }}{% endif %}{% endblock %}">
+<meta property="og:type" content="{% block og_type %}{% if page %}article{% else %}website{% endif %}{% endblock %}">
 <meta property="og:url" content="{% block og_url %}{{ current_url | safe }}{% endblock %}">
 <meta property="og:image" content="{% block og_image %}{{ get_url(path='images/social-card.jpg') }}{% endblock %}">
 <meta property="og:site_name" content="{{ config.title }}">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{% block twitter_title %}{{ config.title }}{% endblock %}">
-<meta name="twitter:description" content="{% block twitter_description %}{{ config.description }}{% endblock %}">
+<meta name="twitter:title" content="{% block twitter_title %}{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}{% endblock %}">
+<meta name="twitter:description" content="{% block twitter_description %}{% if page.description %}{{ page.description }}{% else %}{{ config.description }}{% endif %}{% endblock %}">
 <meta name="twitter:image" content="{% block twitter_image %}{{ get_url(path='images/social-card.jpg') }}{% endblock %}">
 
+<!-- Mastodoooon -->
+<meta name="fediverse:creator" content="@brian@famichiki.jp">
 <!-- Tailwind CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
 <!-- Google Fonts -->
@@ -106,7 +108,7 @@ li {
  {% block content %}{% endblock %}
 </div>
 <footer>
-   <a href="https://famichiki.jp/@brian">Find me on Mastodon</a> | <a href="/atom.xml" target="_blank">RSS</a>
+  <a rel="me" href="https://famichiki.jp/@brian">Find me on Mastodon</a> | <a href="/atom.xml" target="_blank">RSS</a>
 </footer>
 </body>
 </html>

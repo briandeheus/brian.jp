@@ -4,7 +4,6 @@ date = 2023-12-17
 +++
 
 
-
 I can be quite impulsive. Not "buy a Snickers at the checkout" impulsive, (okay, that too),
 but "drive to another country at 22:00pm" with a homie, "just quit college, bro", and "move to another country"
 impulsive.
